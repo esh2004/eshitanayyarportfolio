@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eshita Nayyar, Economist & Researcher</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&family=IBM+Plex+Mono:wght@400;500;600&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#101a2b;
+    --paper:#eee7d6;
+    --paper-light:#f6f1e4;
+    --amber:#c98a2c;
+    --teal:#2f6f65;
+    --red-pen:#a1382f;
+    --line:#c9bfa3;
+    --shadow: 0 8px 24px rgba(16,26,43,0.35);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--ink);
+    color:var(--paper-light);
+    font-family:'Source Sans 3', sans-serif;
+    overflow-x:hidden;
+  }
+  ::selection{ background:var(--amber); color:var(--ink); }
+
+  .noise{
+    position:fixed; inset:0; pointer-events:none; z-index:0; opacity:.05;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  header.hero{
+    position:relative;
+    min-height:92vh;
+    display:flex; flex-direction:column; justify-content:center;
+    padding: 8vh 8vw 6vh;
+    background:
+      radial-gradient(circle at 15% 20%, rgba(201,138,44,0.08), transparent 45%),
+      radial-gradient(circle at 85% 80%, rgba(47,111,101,0.10), transparent 45%),
+      var(--ink);
+  }
+  .portrait{
+    width:132px; height:132px;
+    border-radius:50%;
+    object-fit:cover;
+    border:3px solid var(--amber);
+    box-shadow: var(--shadow);
+    margin-bottom:1.8rem;
+    background: var(--paper-light);
+  }
+  .portrait-fallback{
+    width:132px; height:132px;
+    border-radius:50%;
+    border:3px dashed var(--amber);
+    margin-bottom:1.8rem;
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Fraunces', serif;
+    font-size:2.2rem;
+    color:var(--amber);
+    background: rgba(201,138,44,0.08);
+  }
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    font-size:.72rem;
+    color:var(--amber);
+    margin-bottom:1.4rem;
+  }
+  .eyebrow::before{ content:""; }
+
+  h1.title{
+    font-family:'Fraunces', serif;
+    font-weight:700;
+    font-size: clamp(2.6rem, 7vw, 5.4rem);
+    line-height:1.02;
+    margin:0 0 1.4rem;
+    max-width:16ch;
+  }
+  h1.title em{
+    font-style:italic;
+    font-weight:500;
+    color:var(--amber);
+  }
+  .hero-sub{
+    max-width:640px;
+    font-size:1.15rem;
+    line-height:1.65;
+    color:#cfc6ac;
+  }
+  .hero-sub b{ color:var(--paper-light); font-weight:600; }
+
+  .scatter-wrap{
+    position:absolute; top:0; right:0; width:min(46vw, 620px); height:100%;
+    display:flex; align-items:center; justify-content:center;
+    opacity:.9;
+  }
+  #scatter{ width:100%; height:auto; max-height:78vh; }
+
+  .scroll-cue{
+    margin-top:3rem;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:.75rem;
+    color:#8d846c;
+    letter-spacing:.1em;
+  }
+  .scroll-cue::after{ content:"↓"; display:inline-block; margin-left:.5rem; animation:bob 1.6s ease-in-out infinite; }
+  @keyframes bob{ 0%,100%{transform:translateY(0);} 50%{transform:translateY(6px);} }
+
+  section{ position:relative; z-index:1; padding: 7rem 8vw; }
+  .section-head{ margin-bottom: 3rem; max-width:680px; }
+  .kicker{
+    font-family:'IBM Plex Mono', monospace;
+    color:var(--teal);
+    font-size:.78rem;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    margin-bottom:.8rem;
+    display:block;
+  }
+  h2{
+    font-family:'Fraunces', serif;
+    font-size:clamp(1.9rem, 3.6vw, 2.8rem);
+    font-weight:600;
+    margin:0 0 1rem;
+  }
+  .section-head p{ color:#cfc6ac; font-size:1.05rem; line-height:1.6; }
+
+  /* ---- CORKBOARD FACTS ---- */
+  .corkboard{
+    background:
+      repeating-linear-gradient(0deg, rgba(0,0,0,0.05) 0 1px, transparent 1px 3px);
+    background-color:#7a5a3a;
+    border-radius:18px;
+    padding: 3.5rem 3rem;
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
+    gap: 2.2rem 2.6rem;
+    box-shadow: inset 0 0 60px rgba(0,0,0,0.35);
+  }
+  .card{
+    background: var(--paper-light);
+    color: var(--ink);
+    padding: 1.6rem 1.5rem 1.8rem;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:.92rem;
+    line-height:1.55;
+    box-shadow: var(--shadow);
+    position:relative;
+    cursor:pointer;
+    transform: rotate(var(--r,0deg));
+    transition: transform .35s ease, box-shadow .35s ease;
+    min-height:150px;
+  }
+  .card:nth-child(1){ --r:-2.5deg; }
+  .card:nth-child(2){ --r:1.6deg; }
+  .card:nth-child(3){ --r:-1deg; }
+  .card:nth-child(4){ --r:2.2deg; }
+  .card:nth-child(5){ --r:-2deg; }
+  .card:nth-child(6){ --r:1deg; }
+  .card:nth-child(7){ --r:-1.6deg; }
+  .card:nth-child(8){ --r:2deg; }
+  .card:nth-child(9){ --r:-1.2deg; }
+  .card:nth-child(10){ --r:1.8deg; }
+  .card:nth-child(11){ --r:-2.2deg; }
+  .card:nth-child(12){ --r:1.3deg; }
+  .card:nth-child(13){ --r:-1.5deg; }
+  .card:hover{ transform: rotate(0deg) translateY(-6px) scale(1.03); box-shadow: 0 16px 30px rgba(0,0,0,0.45); z-index:2; }
+  .card::before{
+    content:"";
+    position:absolute; top:-10px; left:50%; transform:translateX(-50%);
+    width:18px; height:18px; border-radius:50%;
+    background: radial-gradient(circle at 35% 30%, #e8534a, #a1382f);
+    box-shadow: 0 3px 4px rgba(0,0,0,0.4);
+  }
+  .card .num{ color:var(--red-pen); font-weight:600; margin-bottom:.5rem; display:block; }
+  .card .flip-hint{ display:block; margin-top:.7rem; font-size:.72rem; color:#8d846c; }
+  .card .back{ display:none; }
+  .card.flipped .front{ display:none; }
+  .card.flipped .back{ display:block; }
+
+  /* ---- RESEARCH LEDGER ---- */
+  .ledger{ border-top:1px solid var(--line); }
+  .entry{
+    display:grid;
+    grid-template-columns: 90px 1fr;
+    gap: 1.6rem;
+    padding: 1.8rem 0;
+    border-bottom:1px solid rgba(201,191,163,0.25);
+    align-items:start;
+  }
+  .entry .tag{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:.72rem;
+    color:var(--ink);
+    background:var(--amber);
+    padding:.35rem .5rem;
+    border-radius:4px;
+    text-align:center;
+    height:fit-content;
+  }
+  .entry h3{ font-family:'Fraunces', serif; font-weight:600; font-size:1.3rem; margin:0 0 .5rem; }
+  .entry p{ color:#cfc6ac; margin:0; line-height:1.6; font-size:.98rem; }
+  .entry a{ color: var(--teal); text-decoration:none; border-bottom:1px dashed var(--teal); }
+
+  /* ---- GAME: SIGNIFICANCE TESTER ---- */
+  .game-panel{
+    background: var(--paper-light);
+    color: var(--ink);
+    border-radius: 18px;
+    padding: 3rem clamp(1.5rem, 5vw, 3.5rem);
+    box-shadow: var(--shadow);
+  }
+  .game-panel .kicker{ color: var(--red-pen); }
+  .game-panel h2{ color:var(--ink); }
+  .game-panel .section-head p{ color:#4a4433; }
+  .terminal{
+    font-family:'IBM Plex Mono', monospace;
+    background: var(--ink);
+    color:#b7f0c1;
+    border-radius:10px;
+    padding: 1.6rem;
+    font-size:.92rem;
+    line-height:1.7;
+    min-height:120px;
+  }
+  .terminal .prompt::before{ content:"> "; color:var(--amber); }
+  .game-controls{ display:flex; gap:1rem; margin-top:1.4rem; flex-wrap:wrap; }
+  .btn{
+    font-family:'IBM Plex Mono', monospace;
+    border:2px solid var(--ink);
+    background:transparent;
+    color:var(--ink);
+    padding:.7rem 1.3rem;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:.88rem;
+    transition: all .2s ease;
+  }
+  .btn:hover{ background:var(--ink); color:var(--paper-light); }
+  .btn.primary{ background:var(--red-pen); border-color:var(--red-pen); color:white; }
+  .btn.primary:hover{ background:#832c25; }
+  .score{ font-family:'IBM Plex Mono', monospace; margin-top:1rem; font-size:.85rem; color:#4a4433; }
+
+  /* ---- STACK ---- */
+  .stack{ display:flex; flex-wrap:wrap; gap:.7rem; margin-top:1rem; }
+  .chip{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:.78rem;
+    padding:.5rem .9rem;
+    border:1px solid var(--line);
+    border-radius:999px;
+    color:#cfc6ac;
+  }
+
+  footer{
+    padding: 4rem 8vw 3rem;
+    text-align:center;
+    border-top:1px solid rgba(201,191,163,0.2);
+  }
+  footer .sig{ font-family:'Fraunces', serif; font-style:italic; font-size:1.6rem; color:var(--amber); }
+  footer a{ color:var(--paper-light); }
+  footer .links{ margin-top:1rem; font-family:'IBM Plex Mono', monospace; font-size:.85rem; color:#8d846c; }
+  footer .links a{ color:#cfc6ac; margin: 0 .6rem; }
+
+  .beyond-grid{
+    display:grid;
+    grid-template-columns: 320px 1fr;
+    gap: 3rem;
+    align-items:center;
+  }
+  .beyond-photo-full{
+    width:100%;
+    height:auto;
+    border-radius:14px;
+    box-shadow: var(--shadow);
+    border: 3px solid var(--amber);
+  }
+  .beyond-text p{
+    color:#cfc6ac;
+    font-size:1.05rem;
+    line-height:1.7;
+    margin: 0 0 1rem;
+  }
+  @media (max-width: 700px){
+    .beyond-grid{ grid-template-columns: 1fr; }
+    .beyond-photo-full{ max-width:280px; margin: 0 auto; display:block; }
+  }
+
+  @media (max-width: 860px){
+    .scatter-wrap{ display:none; }
+    .entry{ grid-template-columns: 1fr; }
+  }
+
+  :focus-visible{ outline: 2px solid var(--amber); outline-offset: 3px; }
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
+  }
+</style>
+</head>
+<body>
+<div class="noise"></div>
+
+<header class="hero">
+  <img src="photo.jpg" alt="Eshita Nayyar" class="portrait" onerror="this.outerHTML='&lt;div class=&quot;portrait-fallback&quot;&gt;EN&lt;/div&gt;'">
+  <div class="eyebrow">Eshita Nayyar, MSc Economics, London School of Economics</div>
+  <h1 class="title">Does the policy do<br>what it says it <em>will</em>?</h1>
+  <p class="hero-sub">I'm an economist who tests that question with data, on <b>trade policy</b>, <b>emerging markets</b>, and <b>firm behaviour</b>. My favourite module at LSE was Economics of Industry, and it shaped my dissertation: I found that an additional tariff on imports didn't raise Indian steel firms' productivity, the mirror image of Topalova and Khandelwal's (2011) finding that liberalisation raises it. Protection, it turns out, doesn't work the same way in reverse.</p>
+  <p class="hero-sub" style="margin-top:1rem;">Six internships and a lot of early mornings got me to LSE. I'm looking for roles in <b>strategy</b>, <b>economic and market research</b>, and <b>consulting</b>, wherever rigorous analysis meets real decisions.</p>
+  <div class="scroll-cue">scroll for facts, findings, and a small experiment</div>
+  <div class="scatter-wrap"><svg id="scatter" viewBox="0 0 400 400"></svg></div>
+</header>
+
+<section id="facts">
+  <div class="section-head">
+    <span class="kicker">Field notes</span>
+    <h2>Pinned to the corkboard</h2>
+    <p>Twelve index cards. Click one to flip it.</p>
+  </div>
+  <div class="corkboard" id="corkboard"></div>
+</section>
+
+<section id="research">
+  <div class="section-head">
+    <span class="kicker">The ledger</span>
+    <h2>What I've actually researched</h2>
+    <p>Not a skills list, the real questions I've spent time on.</p>
+  </div>
+  <div class="ledger" id="ledger"></div>
+</section>
+
+<section id="game">
+  <div class="game-panel">
+    <div class="section-head">
+      <span class="kicker">Try it yourself</span>
+      <h2>Significant, or noise?</h2>
+      <p>I'll show you a real-style difference-in-differences result. You decide if it's statistically significant at the 5% level before I confirm.</p>
+    </div>
+    <div class="terminal" id="terminal">
+      <div class="prompt" id="terminal-line">Loading estimate...</div>
+    </div>
+    <div class="game-controls">
+      <button class="btn primary" onclick="answer('sig')">Significant</button>
+      <button class="btn" onclick="answer('notsig')">Not significant</button>
+      <button class="btn" onclick="nextRound()">Next estimate →</button>
+    </div>
+    <div class="score" id="score">Score: 0 / 0</div>
+  </div>
+</section>
+
+<section id="beyond">
+  <div class="section-head">
+    <span class="kicker">Beyond the numbers</span>
+    <h2>Off the clock</h2>
+  </div>
+  <div class="beyond-grid">
+    <img src="speaking.jpg" alt="Eshita speaking at a podium" class="beyond-photo-full" onerror="this.style.display='none'">
+    <div class="beyond-text">
+      <p>I was Head of Dramatics at school, and I've loved being on a stage ever since, the microphone, the nerves right before, all of it.</p>
+      <p>I play badminton whenever I can rope someone into a game, and I've played piano for years. Music is the one place I go where I'm not trying to figure anything out.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="sig">Eshita</div>
+  <div class="links">
+    <a href="mailto:eshitanayyar@gmail.com">eshitanayyar@gmail.com</a> ·
+    <a href="https://medium.com/@eshitanayyar" target="_blank">Medium</a> ·
+    <a href="#" target="_blank">GitHub</a>
+  </div>
+</footer>
+
+<script>
+/* ---------- SCATTER TO REGRESSION LINE ANIMATION ---------- */
+(function(){
+  const svgns = "http://www.w3.org/2000/svg";
+  const svg = document.getElementById('scatter');
+  const W=400,H=400;
+  const points=[];
+  const n=42;
+  for(let i=0;i<n;i++){
+    const x = 30 + Math.random()*340;
+    const noise = (Math.random()-0.5)*140;
+    const y = 370 - (x*0.55) + noise;
+    points.push({x, y: Math.max(20,Math.min(380,y))});
+  }
+  points.forEach((p,i)=>{
+    const c = document.createElementNS(svgns,'circle');
+    c.setAttribute('cx', p.x);
+    c.setAttribute('cy', 400); // start at bottom
+    c.setAttribute('r', 4.5);
+    c.setAttribute('fill', i%3===0 ? '#c98a2c' : '#e8e2cf');
+    c.setAttribute('opacity', '0.85');
+    svg.appendChild(c);
+    setTimeout(()=>{
+      c.style.transition = 'cy 900ms cubic-bezier(.2,.8,.2,1)';
+      c.setAttribute('cy', p.y);
+    }, 60*i);
+  });
+  const line = document.createElementNS(svgns,'line');
+  line.setAttribute('x1', 20); line.setAttribute('y1', 370-20*0.55);
+  line.setAttribute('x2', 20); line.setAttribute('y2', 370-20*0.55);
+  line.setAttribute('stroke', '#2f6f65');
+  line.setAttribute('stroke-width', '2.5');
+  line.setAttribute('stroke-dasharray', '6 5');
+  svg.appendChild(line);
+  setTimeout(()=>{
+    line.style.transition = 'x2 1200ms ease, y2 1200ms ease';
+    line.setAttribute('x2', 370);
+    line.setAttribute('y2', 370-370*0.55);
+  }, 60*n + 300);
+})();
+
+/* ---------- CORKBOARD FACTS ---------- */
+const facts = [
+  {
+    front: "01 · Fun fact",
+    front2: "I published an article arguing India's '5th largest economy' headline was hiding a current account deficit problem.",
+    back: "The piece: <i>'India Becoming the 5th Largest Economy: Growth or False Security?'</i> on Medium. My take: revenge spending post-lockdown, not structural growth."
+  },
+  {
+    front: "02 · Confession",
+    front2: "My dissertation's headline finding is a null result, and I'm proud of it.",
+    back: "Protection didn't raise productivity, markups, or wages. It just cut capital investment by ~11%. Sometimes the honest answer is 'it didn't work.'"
+  },
+  {
+    front: "03 · Origin story",
+    front2: "A summer school lecture on seasonal migration in Bangladesh sent me down a fast-fashion rabbit hole.",
+    back: "Studying under Dr. Gharad Bryan at LSE, I explored whether financial incentives could help fast fashion workers diversify into agriculture during off-season."
+  },
+  {
+    front: "04 · Team lead",
+    front2: "I ran a 15-person research team across countries, over Slack, time zones and all.",
+    back: "University of London Global Community: we tracked how the US-China trade war rattled Asian equity markets, and how Vietnam quietly won."
+  },
+  {
+    front: "05 · Weirdly specific",
+    front2: "I once investigated why 92% of Indians don't invest in mutual funds, despite strong returns.",
+    back: "Turned out to be financial literacy, not performance. Ran 15+ interviews at HDFC to trace the real barrier."
+  },
+  {
+    front: "06 · Off-topic",
+    front2: "I'm into the Easterlin Paradox, the idea that money buys happiness only up to a point.",
+    back: "People compare relative income, not absolute income. It's why I think 'growth' numbers alone rarely tell the full story."
+  },
+  {
+    front: "07 · The long way round",
+    front2: "Six internships across three years got me from Mumbai to the LSE campus.",
+    back: "Kotak, ABN, HDFC, Vanguard, AIESEC, and my family's own business. Every one of them fed directly into the CV that got me into LSE's MSc."
+  },
+  {
+    front: "08 · Favourite module",
+    front2: "Economics of Industry was the course that actually shaped my dissertation.",
+    back: "Competitive strategy and firm behaviour, taught at LSE, gave me the exact lens to ask whether protection helps or hollows out an industry."
+  },
+  {
+    front: "09 · Commodities detour",
+    front2: "I traced how the Russia-Ukraine war moved a single commodity, sunflower oil, through global supply chains.",
+    back: "At Vanguard, I mapped how the shock rerouted sourcing and shipping, spiked prices, and split the economy: defence gained, manufacturing paid the input-cost bill."
+  },
+  {
+    front: "10 · Overtaking Japan",
+    front2: "I wrote a 30+ page study on whether India could overtake Japan as the world's 4th largest economy.",
+    back: "At Kotak, I analysed exchange rate dynamics, monetary policy trends, and manufacturing and insurance sector growth, then built a Python pipeline to track India-Japan GDP data and FX volatility, running stationarity and GARCH tests on it."
+  },
+  {
+    front: "11 · Before the spreadsheets",
+    front2: "Before econometrics, I was interviewing underprivileged women about the issues they actually faced.",
+    back: "As President of the Editorial Society at Rotaract Club of Podar College, I ran interviews with underprivileged women to surface local issues and get the student community engaged with them."
+  },
+  {
+    front: "12 · Working method",
+    front2: "LSE actively encourages using AI tools in research, and I lean on them a lot.",
+    back: "I use AI to speed up literature scans, sense-check code, and stress-test my own arguments, then verify everything against the primary data and sources myself."
+  }
+];
+const board = document.getElementById('corkboard');
+facts.forEach((f)=>{
+  const card = document.createElement('div');
+  card.className='card';
+  card.innerHTML = `
+    <div class="front">
+      <span class="num">${f.front}</span>
+      ${f.front2}
+      <span class="flip-hint">click to flip →</span>
+    </div>
+    <div class="back">${f.back}<span class="flip-hint">← click to flip back</span></div>
+  `;
+  card.addEventListener('click', ()=> card.classList.toggle('flipped'));
+  board.appendChild(card);
+});
+
+/* ---------- RESEARCH LEDGER ---------- */
+const entries = [
+  {tag:"2025-26", title:"Trade Policy & Firm Productivity", body:"MSc dissertation, received high merit. Difference-in-differences estimation of anti-dumping duties on Indian steel firm TFP, using firm-level panel data (CMIE Prowess, 2011-2020)."},
+  {tag:"2025", title:"Could India Overtake Japan?", body:"Kotak Mahindra Bank. 30+ page macro research study on exchange rate dynamics, monetary policy, and manufacturing/insurance sector growth. Built a Python pipeline to track India-Japan GDP and FX volatility, running stationarity and GARCH tests."},
+  {tag:"2024-25", title:"US-China Trade War & Asian Volatility", body:"Led a 15-person international team (ULGC) tracking spillovers into Asian equity markets, and Vietnam's rise as an alternative supplier."},
+  {tag:"2023-24", title:"EU Demographics & Labour Shortage", body:"Vanguard Think Tank. Studied Germany's immigration response to an aging population, proposing tax reforms for low-income earners to close skill gaps."},
+  {tag:"2023", title:"Mutual Fund Investment Barriers, India", body:"HDFC Mutual Fund. 15+ client interviews revealed financial literacy, not returns, as the binding constraint on retail investment."},
+  {tag:"2023", title:"India's Growth Narrative", body:"Medium essay questioning whether India's '5th largest economy' status reflected durable growth or a post-lockdown spending surge."},
+  {tag:"2023-24", title:"Commodity Markets: Sunflower Oil & the Russia-Ukraine Shock", body:"Vanguard Think Tank. Traced how the war disrupted sourcing and shipping of sunflower oil, spiking prices and splitting the economy into winners (defence) and losers (manufacturing input costs)."},
+];
+const ledger = document.getElementById('ledger');
+entries.forEach(e=>{
+  const div = document.createElement('div');
+  div.className='entry';
+  div.innerHTML = `<div class="tag">${e.tag}</div><div><h3>${e.title}</h3><p>${e.body}</p></div>`;
+  ledger.appendChild(div);
+});
+
+/* ---------- GAME ---------- */
+const rounds = [
+  {label:"Effect of protection on TFP", coef:-0.041, se:0.0279, sig:false},
+  {label:"Effect on capital investment", coef:-0.111, se:0.041, sig:true},
+  {label:"Effect on markups", coef:0.051, se:0.046, sig:false},
+  {label:"Wooldridge TFP estimate", coef:-0.056, se:0.0299, sig:true},
+  {label:"Effect on wages", coef:-0.028, se:0.054, sig:false},
+  {label:"Small-firm heterogeneity effect", coef:-0.045, se:0.041, sig:false},
+];
+let idx = Math.floor(Math.random()*rounds.length);
+let correct=0, total=0;
+let answered=false;
+
+function tval(r){ return Math.abs(r.coef/r.se); }
+function render(){
+  const r = rounds[idx];
+  const t = tval(r).toFixed(2);
+  document.getElementById('terminal-line').innerHTML =
+    `${r.label}<br>coefficient = ${r.coef} &nbsp; (SE = ${r.se})<br>|t| ≈ ${t}<br><br>Significant at 5%? (roughly |t| > 1.96)`;
+  answered=false;
+}
+function answer(choice){
+  if(answered) return;
+  answered = true;
+  const r = rounds[idx];
+  total++;
+  const userSaidSig = choice==='sig';
+  const isRight = userSaidSig === r.sig;
+  if(isRight) correct++;
+  document.getElementById('terminal-line').innerHTML +=
+    `<br><br>${isRight ? '✓ Correct.' : '✗ Not quite.'} p-value implies this is <b>${r.sig ? 'significant' : 'not significant'}</b> at 5%.`;
+  document.getElementById('score').textContent = `Score: ${correct} / ${total}`;
+}
+function nextRound(){
+  idx = (idx+1) % rounds.length;
+  render();
+}
+render();
+</script>
+</body>
+</html>
